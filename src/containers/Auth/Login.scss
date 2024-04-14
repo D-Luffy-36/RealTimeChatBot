@@ -1,0 +1,170 @@
+.login-background {
+  height: 100vh;
+  background-color: white;
+
+  .login-container {
+    margin: 0 auto;
+    background: white;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 576px;
+    height: 670px;
+    border: 1px solid rgba(224, 224, 224, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .login-text-1 {
+        font-weight: 600;
+        font-size: 24px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .login-text-2 {
+        font-weight: 600;
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+
+      .login-input {
+        width: 100%;
+        max-width: 380px;
+        margin-bottom: 15px;
+        label {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        input {
+          width: 100%;
+          border: 2px solid rgba(224, 224, 224, 1);
+          padding: 10px;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+        .input-password {
+          position: relative;
+          input {
+            padding-right: 30px;
+          }
+          i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+          }
+        }
+      }
+
+      .btn-login {
+        width: 100%;
+        max-width: 380px;
+        height: 50px;
+        margin-bottom: 15px;
+        background: rgba(33, 33, 33, 1);
+        color: white;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          background: rgba(33, 33, 33, 0.8);
+        }
+      }
+
+      .remember-me {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        input[type="checkbox"] {
+          margin-right: 10px;
+        }
+        span {
+          position: relative;
+          text-decoration: underline; // Gạch chân dưới toàn bộ nội dung
+          &:before {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            background-color: rgba(33, 33, 33, 1);
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+          }
+        }
+        input[type="checkbox"]:checked + span:before {
+          transform: scaleX(1);
+        }
+        &:hover {
+          span:before {
+            background-color: rgba(33, 33, 33, 0.8);
+          }
+        }
+      }
+
+      .forgot-password {
+        font-size: 12px;
+        float: right;
+        margin-bottom: 15px;
+        margin-left: auto;
+      }
+
+      .login {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 2px solid rgba(33, 33, 33, 1);
+        font-size: 14px;
+        color: rgba(33, 33, 33, 1);
+        cursor: pointer;
+        &:hover {
+          background: rgba(33, 33, 33, 0.1);
+        }
+      }
+
+      .social-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        .facebook-icon,
+        .apple-icon,
+        .google-icon {
+          font-size: 20px;
+          background: #f7f7f7;
+          color: #007bff; /* Màu xanh dương */
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 10px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: #e5e5e5; /* Màu xám */
+          }
+        }
+
+        .apple-icon {
+          color: #000; /* Màu đen */
+        }
+      }
+    }
+  }
+}
