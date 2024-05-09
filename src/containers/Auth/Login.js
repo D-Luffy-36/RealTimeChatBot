@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import './Login.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faApple, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { loginApi } from '../../servieces/UserService';
+import { TextField, Button, Checkbox, FormControlLabel, Typography, Box } from '@mui/material';
+import picture from './picture.png';
+import { makeStyles } from '@mui/system';
 
 const Login = () => {
-    const [email, setEmail] = useState(''); // Thay đổi tên biến username thành email
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isShowPassword, setIsShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleOnChangeEmail = (event) => { // Thay đổi tên hàm handleOnChangeUsername thành handleOnChangeEmail
-        setEmail(event.target.value); // Thay đổi setEmail(event.target.value) thành setUsername(event.target.value)
+    const handleOnChangeEmail = (event) => {
+        setEmail(event.target.value);
     }
 
     const handleOnChangePassword = (event) => {
@@ -20,15 +18,7 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
-        try {
-            let res = await loginApi(email, password); // Thay đổi tham số thứ nhất của loginApi từ username thành email
-            console.log("check login:", res);
-            if (res && res.token) {
-                localStorage.setItem("token", res.token);
-            }
-        } catch (error) {
-            console.error("Error while logging in:", error);
-        }
+        // Xử lý đăng nhập ở đây
     }
     
     const handleShowHidePassword = () => {
@@ -40,87 +30,109 @@ const Login = () => {
     }
 
     return (
-        <div className='login-background'>
-            <div className='login-container'>
-                <div className='login-content row'>
-                    <div className='col-12  login-text-1'>
-                        Login To Chat Website
-                    </div>
+        <Box sx={{ 
+            background: 'rgba(71, 183, 236, 1)',
+            height: '100vh', 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center' 
+        }}>
+          
+          <Typography variant='h2' sx={{ 
+                color: 'black',
+                position: 'absolute', 
+                top: '20px', 
+                left: '20px', 
+                marginBottom: '10px',
+                marginTop: '137px',
+            }}>
+                Welcome to Chat Website<br />
+        </Typography>
 
-                    <div className='login-text-2'>
-                        Quick & Simple way to  Communicate with others
-                    </div>
+            
+        <Typography sx={{ position: 'absolute', top: '300px', width: '642px',height: "81px", color: 'black', left: '105px' }}>
+            With global connectivity, the chat website lets you meet and <br />
+            communicate with people worldwide.
+        </Typography>
+
+            <img 
+                src={picture} 
+                alt="Global Connectivity" 
+                style={{ 
+                    width: '550px', 
+                    height: '450px', 
+                    position: 'absolute', 
+                    left: '135px', // Để căn giữa từ lề bên trái, tính giá trị left là 50% trừ đi một nửa của chiều rộng của hình ảnh
+                    marginTop: '374px'
+                }} 
+            />
+
                         
 
-                    <div className='col-12 form-group login-input'>
-                        <label>EMAIL ADDRESS</label> {/* Thay đổi từ "EMAIL DRESS" thành "EMAIL ADDRESS" */}
-                        <input type='text'
-                            className='form-control'
-                            placeholder='@gmail.com'
-                            value={email} // Thay đổi giá trị của value từ username thành email
-                            onChange={(event) => handleOnChangeEmail(event)} // Thay đổi handleOnChangeUsername thành handleOnChangeEmail
-                        />
-                    </div>
+            <Box className='login-container' sx={{ 
+                marginLeft: 'auto',
+                width: '576px', 
+                height: '600px', 
+                padding: '20px', 
+                backgroundColor: '#fff', 
+                textAlign: 'center', 
+                marginTop: '157px',
+                marginRight: '40px'
+                
+            }}>
+                <Typography variant='h4' sx={{ fontWeight: 600, marginBottom: '10px', marginTop: '20px' }}>
+                    Login To Chat Website
+                </Typography>
+                <Typography variant='body1' sx={{ 
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    lineHeight: '17.07px',
+                    marginBottom: '50px'
+                }}>
+                    Quick & Simple way to Communicate with others
+                </Typography>
 
-                    <div className='col-12 form-group login-input'>
-                        <label>PASSWORD</label>
-                        <div className='input-password'>
-                            <input
-                                className='form-control'
-                                type={isShowPassword ? 'text' : 'password'}
-                                placeholder='password'
-                                value={password}
-                                onChange={(event) => handleOnChangePassword(event)}
-                            />
-                            <span onClick={handleShowHidePassword}>
-                                <i className={isShowPassword ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash'}></i>
-                            </span>
-                        </div>
-                    </div>
+                <TextField
+                    label="EMAIL ADDRESS"
+                    variant="outlined"
+                    fullWidth
+                    value={email}
+                    onChange={handleOnChangeEmail}
+                    sx={{ marginBottom: '0px' }}
+                />
 
-                   
-                    <div className='row'>
-                        <div className='col-6'>
-                            <label className='remember-me'>
-                                <input
-                                    type="checkbox"
-                                    checked={rememberMe}
-                                    onChange={handleRememberMe}
-                                />
-                                <span>Remember me</span>
-                            </label>
-                        </div>
+                <TextField
+                    label="PASSWORD"
+                    variant="outlined"
+                    fullWidth
+                    type={isShowPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={handleOnChangePassword}
+                    sx={{ marginBottom: '30px' }}
+                />
 
-                        <div className='col-6 text-right'>
-                            <span className='forgot-password'>Forgot your password? </span>
-                        </div>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                    <FormControlLabel
+                        control={<Checkbox checked={rememberMe} onChange={handleRememberMe} />}
+                        label="Remember me"
+                        sx={{ textDecoration: 'underline' }}
+                    />
+                    <Typography sx={{ textDecoration: 'underline' }}>Forgot your password?</Typography>
+                </Box>
 
-                    </div>
+                <Button variant='contained'  onClick={handleLogin} sx={{background: 'black', width: '380px', height:'69.04px'}}>
+                    LOG IN
+                </Button>
 
+                <Typography variant='body1' align='center' sx={{ marginTop: '20px', marginBottom:'30px'}}>
+                    Don't have an account?
+                </Typography>
 
+                <Button variant='outlined' sx={{ color: 'black', borderColor: 'black' }}>Sign Up</Button>
 
-                    <div className="col-12">
-                        <button className='btn-login' onClick={handleLogin}>LOG IN</button>
-                    </div>
-
-
-                    <div className='col-12 text-center mt-3'>
-                        <span className='text-other-login'>Or Login with: </span>
-                    </div>
-
-                    <div className='col-12 social-login'>
-                        <FontAwesomeIcon className ='google-icon' icon={faGoogle} />
-                        <FontAwesomeIcon className ='apple-icon' icon={faApple} />
-                        <FontAwesomeIcon className='facebook-icon' icon={faFacebook} />
-                    </div>
-
-                    <div className='col-12 text-center mt-3'>
-                        <span className='login'>Login </span>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+            </Box>
+        </Box>
     );
 }
 

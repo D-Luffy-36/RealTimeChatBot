@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import './SignUp.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faApple, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { TextField, Button, Checkbox, FormControlLabel, Typography, Box } from '@mui/material';
+import picture from './picture.png';
 
 const SignUp = () => {
-    const [email, setEmail] = useState(''); // Thêm trạng thái email
-    const [username, setUsername] = useState(''); // Thêm trạng thái username
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isShowPassword, setIsShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
 
     const handleOnChangeEmail = (event) => {
-        setEmail(event.target.value); // Xử lý thay đổi email
+        setEmail(event.target.value);
     }
 
     const handleOnChangeUsername = (event) => {
-        setUsername(event.target.value); // Xử lý thay đổi username
+        setUsername(event.target.value);
     }
 
     const handleOnChangePassword = (event) => {
@@ -24,7 +22,7 @@ const SignUp = () => {
     }
 
     const handleSignUp = async () => {
-       
+        // Thực hiện logic đăng ký
     }
     
     const handleShowHidePassword = () => {
@@ -36,86 +34,120 @@ const SignUp = () => {
     }
 
     return (
-        <div className='signup-background'>
-            <div className='signup-container'>
-                <div className='signup-content row'>
-                    <div className='col-12  signup-text-1'>
-                        Sign Up To Chat Website
-                    </div>
+        <Box sx={{ 
+            backgroundColor: 'rgba(71, 183, 236, 1)', 
+            height: '100vh', 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center' 
+        }}>
 
-                    <div className='signup-text-2'>
-                        Quick & Simple way to Communicate with others
-                    </div>
 
-                    <div className='col-12 form-group signup-input'>
-                        <label>EMAIL ADDRESS</label>
-                        <input type='text'
-                            className='form-control'
-                            placeholder='example@gmail.com'
-                            value={email}
-                            onChange={(event) => handleOnChangeEmail(event)}
-                        />
-                    </div>
+        <Typography variant='h2' sx={{ 
+                color: 'black',
+                position: 'absolute', 
+                top: '20px', 
+                left: '20px', 
+                marginBottom: '10px',
+                marginTop: '137px',
+            }}>
+                Welcome to Chat Website<br />
+        </Typography>
 
-                    <div className='col-12 form-group signup-input'>
-                        <label>USERNAME</label>
-                        <input type='text'
-                            className='form-control'
-                            placeholder='Username'
-                            value={username}
-                            onChange={(event) => handleOnChangeUsername(event)}
-                        />
-                    </div>
+        <Typography sx={{ position: 'absolute', top: '300px', width: '642px',height: "81px", color: 'black', left: '105px' }}>
+            With global connectivity, the chat website lets you meet and <br />
+            communicate with people worldwide.
+        </Typography>
 
-                    <div className='col-12 form-group signup-input'>
-                        <label>PASSWORD</label>
-                        <div className='input-password'>
-                            <input
-                                className='form-control'
-                                type={isShowPassword ? 'text' : 'password'}
-                                placeholder='password'
-                                value={password}
-                                onChange={(event) => handleOnChangePassword(event)}
-                            />
-                            <span onClick={handleShowHidePassword}>
-                                <i className={isShowPassword ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash'}></i>
-                            </span>
-                        </div>
-                    </div>
+        <img 
+            src={picture} 
+            alt="Global Connectivity" 
+            style={{ 
+                width: '550px', 
+                height: '450px', 
+                position: 'absolute', 
+                left: '135px', // Để căn giữa từ lề bên trái, tính giá trị left là 50% trừ đi một nửa của chiều rộng của hình ảnh
+                marginTop: '374px'
+            }} 
+        />
+                        
+            <Box className='login-container' sx={{ 
+                marginLeft: 'auto',
+                width: '576px', 
+                height: '600px', 
+                padding: '20px', 
+                backgroundColor: '#fff', 
+                textAlign: 'center', 
+                marginTop: '157px',
+                marginRight: '40px'
+                
+            }}>
+                <Typography variant='h4' sx={{ fontWeight: 600, marginBottom: '10px' }}>
+                    Sign Up To Chat Website
+                </Typography>
 
-                    <div className='row'>
-                        <div className='col-6'>
-                            <label className='remember-me'>
-                                <input
-                                    type="checkbox"
-                                    checked={rememberMe}
-                                    onChange={handleRememberMe}
-                                />
-                                <span>I agree to the Terms of Service and Privacy Policy.</span>
-                            </label>
-                        </div>
-                    </div>
+                <Typography variant='body1' sx={{ 
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    lineHeight: '17.07px',
+                    marginBottom: '50px'
+                }}>
+                      Quick & Simple way to Communicate with others
+                </Typography>
 
-                    <div className="col-12">
-                        <button className='btn-signup' onClick={handleSignUp}>CREATE AN ACCOUNT</button>
-                    </div>
 
-                    <div className='col-12 text-center mt-3'>
-                        <span className='text-other-login'>Or Sign Up with: </span>
-                    </div>
+                <TextField
+                    label="USERNAME"
+                    variant="outlined"
+                    fullWidth
+                    value={username}
+                    onChange={handleOnChangeUsername}
+                    sx={{ marginBottom: '0px' }}
+                />
 
-                    <div className='col-12 social-login'>
-                        <FontAwesomeIcon className ='google-icon' icon={faGoogle} />
-                        <FontAwesomeIcon className ='apple-icon' icon={faApple} />
-                        <FontAwesomeIcon className='facebook-icon' icon={faFacebook} />
-                    </div>
+                <TextField
+                    label="EMAIL ADDRESS"
+                    variant="outlined"
+                    fullWidth
+                    value={email}
+                    onChange={handleOnChangeEmail}
+                    sx={{ marginBottom: '0px' }}
+                />
 
-                    <div className='col-12 text-center mt-3'>
-                        <span className='sign-up'>Sign Up </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+              
+                <TextField
+                    label="PASSWORD"
+                    variant="outlined"
+                    fullWidth
+                    type={isShowPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={handleOnChangePassword}
+                    sx={{ marginBottom: '30px' }}
+                />
+
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                    <FormControlLabel
+                        control={<Checkbox checked={rememberMe} onChange={handleRememberMe} />}
+                        label="I agree to the Terms of Service and Privacy Policy."
+                        sx={{ textDecoration: 'underline' }}
+                    />
+                </Box>
+
+                <Button variant='contained' sx={{ background: 'black', width: '380px', height: '69.04px' }}>
+                    CREATE AN ACCOUNT
+                </Button>
+
+                <Typography variant='body1' align='center' sx={{ marginTop: '20px', marginBottom: '30px' }}>
+                    Already have an account?
+                </Typography>
+
+                <Button variant='outlined' sx={{ color: 'black', borderColor: 'black' }}>
+                    LOG IN
+                </Button>
+
+            </Box>
+        </Box>
     );
 }
 

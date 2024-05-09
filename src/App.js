@@ -6,8 +6,8 @@ import SignUp from './containers/Auth/SignUp';
 function App() {
   return (
     <div className="App">
-      <Login></Login>
-      {/* <SignUp></SignUp> */}
+      {/* <Login></Login> */}
+      <SignUp></SignUp>
     </div>
   );
 }
